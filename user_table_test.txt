@@ -1,0 +1,22 @@
+CREATE TABLE user(
+user_id INTEGER,
+email VARCHAR(30),
+NAME VARCHAR(30),
+phone_no VARCHAR(30),
+rgt_date TIMESTAMP,
+unrgt_date TIMESTAMP,
+unrgt_yn BOOLEAN,
+pwd VARCHAR(50),
+user_img VARCHAR(255),
+user_type VARCHAR(30)
+)
+
+
+
+
+CREATE DATABASE limetestDB;
+
+
+grant all privileges on *.* TO 'lime'@'localhost';
+
+FLUSH PRIVILEGES;
