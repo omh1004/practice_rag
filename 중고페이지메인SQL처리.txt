@@ -1,0 +1,32 @@
+중고거래 메인페이지 sql처
+
+1. replace function을 이용한 , \r값 처리
+
+SELECT 
+		i.item_name as item_name,
+		i.item_cost as item_cost,
+		REPLACE( rg.region_name, '\r', '' )   as region_name,
+		 REPLACE( ct.city_name, '\r', '' ) as city_name,
+		i.view_cnt as view_cnt
+	FROM item i
+	LEFT JOIN city ct
+	ON i.city_id = ct.city_id
+	LEFT JOIN region rg 
+	ON ct.region_id = rg.region_id
+LIMIT 10
+
+
+
+SELECT jg.* FROM 
+(SELECT 
+	i.item_name as item_name,
+	i.item_cost as item_cost,
+	rg.region_name  as region_name,
+	ct.city_name as city_name,
+	i.view_cnt as view_cnt
+FROM item i
+LEFT JOIN city ct
+ON i.city_id = ct.city_id
+LEFT JOIN region rg 
+ON ct.region_id = rg.region_id) jg
+LIMIT 10
