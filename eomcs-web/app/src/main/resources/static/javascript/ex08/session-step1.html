@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>세션다루기</title>
+</head>
+<body>
+<h1>1단계</h1>
+<form name = "form1">
+이름 : <input name="name"><br>
+<button id="btn1" type="button">다음</button>
+</form>
+<script>
+document.querySelector("#btn1").onclick = function(){
+	
+	var fd =new FormData(document.forms.namedItem("form1")); //폼의 값들을 매핑해서 append해서 가져온다.
+	
+	fetch("/session/step1",{
+		method:"POST",
+		body: new URLSearchParams(fd) // form 데이터를 바로 주지 말고 , URLSearchParams로 감싸면 , 키=밸류로 넘어간다.
+	}).then(function(response){
+		return response.text();
+	}).then(function(text){
+		console.log(text);
+		location.href= "session-step2.html"
+	});
+}
+</script>
+</body>
+</html>
