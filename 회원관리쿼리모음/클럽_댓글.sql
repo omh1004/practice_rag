@@ -10,7 +10,7 @@ WHERE club_id = cp.club_id) clubName,
 cp.title title,
 cpc.content content,
 (SELECT 
-	NAME 
+	NAME 	
 FROM
 user 
 WHERE user_id =cp.user_id) pUserName,
